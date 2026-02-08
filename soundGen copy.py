@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-根据左右声道的 时间差（ITD）与 响度（ILD），生成五个方向的立体声 WAV：
+根据左右声道音量比例，生成五个方向的立体声 WAV：
 前、左、右、左前、右前，保存到 audio 文件夹。
 """
 from __future__ import annotations
 
 import os
 import wave
+import struct
 
 import numpy as np
 
@@ -14,14 +15,13 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 AUDIO_DIR = os.path.join(ROOT_DIR, "audio")
 
 # 五方向：左(0)、左前(1)、前(2)、右前(3)、右(4)
-# 每项：(左声道延迟ms, 右声道延迟ms, 左声道增益, 右声道增益)
-# 声源在左 → 左耳先到 → 右声道延迟；声源在右 → 左声道延迟。增益表示响度比。
-DIRECTION_PARAMS = (
-    (0.0, 0.5, 1.0, 0.0),   # 0 左：右声道延迟 0.5ms，仅左响
-    (0.0, 0.25, 1.0, 0.5),  # 1 左前：右延迟 0.25ms，左强右弱
-    (0.0, 0.0, 1.0, 1.0),   # 2 前：无时差，双声道等响
-    (0.25, 0.0, 0.5, 1.0),  # 3 右前：左延迟 0.25ms，左弱右强
-    (0.5, 0.0, 0.0, 1.0),   # 4 右：左声道延迟 0.5ms，仅右响
+# 每个方向 (左声道增益, 右声道增益)，范围 0~1
+DIRECTION_GAINS = (
+    (1.0, 0.0),   # 0 左：仅左声道
+    (1.0, 0.5),   # 1 左前：左强右弱
+    (1.0, 1.0),   # 2 前：双声道等响
+    (0.5, 1.0),   # 3 右前：左弱右强
+    (0.0, 1.0),   # 4 右：仅右声道
 )
 
 DIRECTION_NAMES = ("左", "左前", "前", "右前", "右")
@@ -40,40 +40,17 @@ def generate_tone(
     return tone
 
 
-def apply_delay(signal: np.ndarray, delay_ms: float, sample_rate: int) -> np.ndarray:
-    """
-    对单声道信号施加延迟（毫秒）。延迟通过前补零、后截断实现。
-    返回与 signal 等长的 float32 数组。
-    """
-    if delay_ms <= 0:
-        return signal.astype(np.float32)
-    delay_samples = int(round(delay_ms * sample_rate / 1000.0))
-    if delay_samples <= 0:
-        return signal.astype(np.float32)
-    n = len(signal)
-    out = np.zeros(n, dtype=np.float32)
-    copy_len = n - delay_samples
-    if copy_len > 0:
-        out[delay_samples:] = signal[:copy_len]
-    return out
-
-
 def generate_direction_audio(
-    delay_left_ms: float,
-    delay_right_ms: float,
     gain_l: float,
     gain_r: float,
     tone: np.ndarray,
-    sample_rate: int,
 ) -> np.ndarray:
     """
-    根据左右声道 时间差 与 响度 生成立体声交错数据（float32）。
+    根据左右声道增益生成立体声交错数据（float32）。
     返回 shape=(len(tone)*2,) 的数组，交错为 L,R,L,R,...
     """
-    left_raw = apply_delay(tone, delay_left_ms, sample_rate)
-    right_raw = apply_delay(tone, delay_right_ms, sample_rate)
-    left = (left_raw * gain_l).astype(np.float32)
-    right = (right_raw * gain_r).astype(np.float32)
+    left = (tone * gain_l).astype(np.float32)
+    right = (tone * gain_r).astype(np.float32)
     stereo = np.empty(len(tone) * 2, dtype=np.float32)
     stereo[0::2] = left
     stereo[1::2] = right
@@ -97,7 +74,7 @@ def generate_and_save_all(
     use_direction_index_names: bool = False,
 ) -> list[str]:
     """
-    根据左右声道 时间差 与 响度（及基准 volume_l/volume_r），生成五个方向的 WAV 并保存到 audio 目录。
+    根据左右声道基准音量 volume_l、volume_r，生成五个方向的 WAV 并保存到 audio 目录。
     use_direction_index_names=True 时保存为 k0.wav~k4.wav，供 direction.py 直接使用。
     返回保存的文件路径列表。
     """
@@ -106,21 +83,14 @@ def generate_and_save_all(
     saved = []
 
     for i, (name_cn, name_en) in enumerate(zip(DIRECTION_NAMES, OUTPUT_NAMES)):
-        delay_l_ms, delay_r_ms, gain_l, gain_r = DIRECTION_PARAMS[i]
+        gain_l, gain_r = DIRECTION_GAINS[i]
         gl = gain_l * volume_l
         gr = gain_r * volume_r
-        stereo = generate_direction_audio(
-            delay_left_ms=delay_l_ms,
-            delay_right_ms=delay_r_ms,
-            gain_l=gl,
-            gain_r=gr,
-            tone=tone,
-            sample_rate=sample_rate,
-        )
+        stereo = generate_direction_audio(gl, gr, tone)
         pcm_bytes = float32_stereo_to_int16(stereo)
 
         if use_direction_index_names:
-            filename = f"k{i}.wav"
+            filename = f"y{i}.wav"
         else:
             filename = f"{output_prefix}_{name_en}.wav"
         filepath = os.path.join(AUDIO_DIR, filename)
