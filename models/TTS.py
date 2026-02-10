@@ -26,7 +26,7 @@ def init_dashscope_api_key():
         dashscope.api_key = os.environ[
             'DASHSCOPE_API_KEY']  # load API-key from environment variable DASHSCOPE_API_KEY
     else:
-        dashscope.api_key = 'sk-d239f644a54d4c109e494a6e3f6b7697'  # set API-key manually
+        dashscope.api_key = 'sk-05ea01424e5545c3b0e4a25b31e4ebd3'  # set API-key manually
 
 
 class TTSProcess():
@@ -70,7 +70,8 @@ class TTSCallback(QwenTtsRealtimeCallback):
     def reset_event(self):
         self.response_counter += 1
         self.complete_event = threading.Event()
-        self.chat.chatting = 0
+        if self.chat:
+            self.chat.chatting = 0
 
     def on_open(self) -> None:
         print('connection opened, init player')

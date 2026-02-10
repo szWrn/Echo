@@ -1,12 +1,13 @@
 from SpeechRecongnition import *
 from Server import *
 # from DegreeOfUnderstanding import *
+from models.api import init_dashscope_api_key
 import threading
 import time
 
 HOST = "0.0.0.0"
 PORT = 5001
-clients = set()
+# clients = set()
 message = []
 
 
@@ -27,7 +28,7 @@ class HandleCallback(Callback):
                 client.sendall(bytes(sentence["text"][-20:] + "\n", "utf-8"))
                 # client.sendall(b"Group2\n")
             except:
-                clients.remove(client)
+                self.server.clients.remove(client)
 
 
 class VoiceRecongnition(SpeechRecognition):
@@ -41,5 +42,6 @@ class VoiceRecongnition(SpeechRecognition):
 
 
 if __name__ == "__main__":
+    init_dashscope_api_key()
     vr = VoiceRecongnition()
     vr.start()

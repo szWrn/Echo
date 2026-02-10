@@ -1,0 +1,19 @@
+{
+    "id": 2,
+    "time": "14:56:23 2026-02-09",
+    "type": 2,
+    "detail": [
+        {
+            "question": "",
+            "user_answer": "前方",
+            "correct_answer": "前方",
+            "result": 1
+        },
+        {
+            "question": "",
+            "user_answer": "左方",
+            "correct_answer": "右方",
+            "result": 0
+        }
+    ]
+}

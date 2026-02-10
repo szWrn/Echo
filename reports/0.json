@@ -1,0 +1,19 @@
+{
+    "id": 0,
+    "time": "12:34:56 2026-02-09",
+    "type": 0,
+    "detail": [
+        {
+            "question": "你好",
+            "user_answer": "你好，今天天气怎么样？",
+            "correct_answer": "你好！今天天气晴朗，适合户外活动。",
+            "result": 1
+        },
+        {
+            "question": "再见",
+            "user_answer": "再见，下次见！",
+            "correct_answer": "再见，祝你有愉快的一天！",
+            "result": 1
+        }
+    ]
+}

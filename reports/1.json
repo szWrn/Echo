@@ -1,0 +1,19 @@
+{
+    "id": 1,
+    "time": "13:45:12 2026-02-09",
+    "type": 1,
+    "detail": [
+        {
+            "question": "时狮使是",
+            "user_answer": "狮",
+            "correct_answer": "时",
+            "result": 0
+        },
+        {
+            "question": "你尼拟逆",
+            "user_answer": "你",
+            "correct_answer": "你",
+            "result": 1
+        }
+    ]
+}

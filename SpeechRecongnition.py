@@ -63,7 +63,7 @@ class SpeechRecognition:
         sys.exit(0)
 
     def start(self):
-        self.init_dashscope_api_key()
+        # self.init_dashscope_api_key()
         print('Initializing ...')
 
         # Start translation

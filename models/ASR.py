@@ -28,7 +28,7 @@ def init_dashscope_api_key():
         dashscope.api_key = os.environ[
             'DASHSCOPE_API_KEY']  # load API-key from environment variable DASHSCOPE_API_KEY
     else:
-        dashscope.api_key = 'sk-d239f644a54d4c109e494a6e3f6b7697'  # set API-key manually
+        dashscope.api_key = 'sk-05ea01424e5545c3b0e4a25b31e4ebd3'  # set API-key manually
 
 
 class ASRProcess:
@@ -79,6 +79,9 @@ class ASRProcess:
 
         while True:
             data = streamInput.read(3200, exception_on_overflow=False)
+            if not self.callback.chat:
+                self.recognition.send_audio_frame(data)
+                continue
             if self.callback.chat.chatting == 0:
                 self.recognition.send_audio_frame(data)
             else:
