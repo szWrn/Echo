@@ -1,0 +1,26 @@
+{
+    "id": 1,
+    "time": "13:45:12 2026-02-09",
+    "type": 1,
+    "detail": [
+        {
+            "question": "时狮使是",
+            "user_answer": "狮",
+            "correct_answer": "时",
+            "result": 0
+        },
+        {
+            "question": "你尼拟逆",
+            "user_answer": "你",
+            "correct_answer": "你",
+            "result": 1
+        },
+        {
+            "question": "狮吃日司",
+            "user_answer": "司",
+            "correct_answer": "司",
+            "result": 1
+        }
+    ],
+    "report": "<style>\n  body { font-family: \"Segoe UI\", \"Microsoft YaHei\", sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9fbfd; }\n  .score-card { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }\n  .score-card h3 { margin-top: 0; font-weight: 600; }\n  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }\n  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e0e6ed; }\n  th { background-color: #f0f5ff; font-weight: 600; color: #4a6fa5; }\n  .correct { color: #28a745; font-weight: bold; }\n  .incorrect { color: #dc3545; font-weight: bold; }\n  .analysis-item { background: #fff; border-left: 4px solid #4a6fa5; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .emoji { font-size: 1.2em; margin-right: 8px; }\n  h2 { color: #2c3e50; border-bottom: 2px solid #4a6fa5; padding-bottom: 6px; }\n</style>\n\n<div class=\"score-card\">\n  <h3>🎯 等级与分数</h3>\n  <p><strong>训练类型：</strong>听音辩声（Type 1）</p>\n  <p><strong>完成时间：</strong>2026-02-09 13:45:12</p>\n  <p><strong>正确率：</strong>66.7%（2/3）</p>\n  <p><strong>当前等级：</strong>★☆☆☆☆（初级）</p>\n  <p><strong>综合得分：</strong>67分（满分100）</p>\n</div>\n\n<h2>📋 题目统计</h2>\n<table>\n  <thead>\n    <tr>\n      <th>题号</th>\n      <th>原题（同音字组）</th>\n      <th>用户作答</th>\n      <th>正确答案</th>\n      <th>结果</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1</td>\n      <td>时狮使是</td>\n      <td>狮</td>\n      <td>时</td>\n      <td class=\"incorrect\">❌</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>你尼拟逆</td>\n      <td>你</td>\n      <td>你</td>\n      <td class=\"correct\">✅</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>狮吃日司</td>\n      <td>司</td>\n      <td>司</td>\n      <td class=\"correct\">✅</td>\n    </tr>\n  </tbody>\n</table>\n<ul>\n  <li>总题数：3</li>\n  <li>正确数：2</li>\n  <li>错误数：1</li>\n  <li>平均反应时：未记录（系统未采集）</li>\n</ul>\n\n<h2>🔍 薄弱项分析</h2>\n<div class=\"analysis-item\">\n  <span class=\"emoji\">⚠️</span><strong>核心薄弱点：</strong><br>\n  • <strong>声调分辨不足：</strong>将“时（shí）”误听为“狮（shī）”，反映对翘舌音第二声与第一声的细微差异敏感度待提升；<br>\n  • <strong>语境依赖较强：</strong>错误发生于无语义支撑的孤立字组，说明纯语音信号解码能力尚需强化。\n</div>\n\n<h2>💬 结语</h2>\n<p>本次听音辩声训练展现出良好的基础音素捕捉能力，但声调精细分辨仍是关键突破点。请保持每日15分钟针对性声调跟读+辨听练习，3天后系统将自动推送进阶训练包。康复进程稳步向前，坚持即进步！ 🌟</p>"
+}

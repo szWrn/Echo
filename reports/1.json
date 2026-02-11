@@ -14,6 +14,13 @@
             "user_answer": "你",
             "correct_answer": "你",
             "result": 1
+        },
+        {
+            "question": "狮吃日司",
+            "user_answer": "司",
+            "correct_answer": "司",
+            "result": 1
         }
-    ]
+    ],
+    "report": "<h1>人工耳蜗术后康复训练报告</h1>\n\n<h2>等级与分数</h2>\n<p><strong>训练类型</strong>：听音辩声（Type 1）<br>\n<strong>完成时间</strong>：2026-02-09 13:45:12<br>\n<strong>正确率</strong>：66.7%（2/3）<br>\n<strong>等级评定</strong>：<span class=\"star-rating\">★☆☆☆☆（初级起步阶段）</span><br>\n<strong>综合得分</strong>：67分（满分100）</p>\n\n<h2>题目统计</h2>\n<table>\n    <thead>\n        <tr>\n            <th>题号</th>\n            <th>题干</th>\n            <th>用户作答</th>\n            <th>正确答案</th>\n            <th>结果</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1</td>\n            <td>时狮使是</td>\n            <td>狮</td>\n            <td>时</td>\n            <td class=\"incorrect\">❌</td>\n        </tr>\n        <tr>\n            <td>2</td>\n            <td>你尼拟逆</td>\n            <td>你</td>\n            <td>你</td>\n            <td class=\"correct\">✅</td>\n        </tr>\n        <tr>\n            <td>3</td>\n            <td>狮吃日司</td>\n            <td>司</td>\n            <td>司</td>\n            <td class=\"correct\">✅</td>\n        </tr>\n    </tbody>\n</table>\n\n<ul class=\"summary-list\">\n    <li><strong>总题数</strong>：3</li>\n    <li><strong>正确数</strong>：2</li>\n    <li><strong>错误数</strong>：1</li>\n    <li><strong>平均反应时</strong>：未记录（系统未采集）</li>\n</ul>\n\n<h2>薄弱项分析</h2>\n\n<h3>✅ 优势表现</h3>\n<ul class=\\\"summary-list\\\">\n    <li>对基础单音节高频字（如“你”“司”）辨识稳定，说明对清晰、强共振峰的元音及简单声母（n、s）感知较可靠。</li>\n</ul>\n\n<h3>⚠️ 核心薄弱点</h3>\n<ul class=\"summary-list\">\n    <li><span class=\"highlight\">声母混淆（sh vs. shi / s vs. sh）</span>：首题“时狮使是”中将“时（shí）”误听为“狮（shī）”，暴露对<strong>翘舌音内部细微时长与调形差异</strong>（如“时”的高平调与“狮”的高升调）分辨能力不足；</li>\n    <li><span class=\"highlight\">同音/近音干扰敏感</span>：四字同音组（shī/shí/shǐ/shì）构成典型声调辨析挑战，当前尚未建立稳定的四声轮廓识别策略；</li>\n    <li><span class=\"highlight\">注意力分配局限</span>：在连续多音节听辨中，易聚焦于熟悉音素（如“狮”），忽略语境线索与声调标记，导致“以偏概全”式误判。</li>\n</ul>\n\n<h2>结语</h2>\n<div class=\"conclusion\">\n    <p>本次训练反映出您已具备基础语音锚定点，但在声调精细分辨与抗干扰听辨方面尚处发展初期。请保持每日规律训练（建议15–20分钟），重点关注声调轮廓的听觉重建。每一次主动修正都是听觉皮层重塑的关键信号——进步不在完美，而在觉察与调整的勇气。坚持3周，您将明显感受到“耳朵开始学会思考”。加油！</p>\n</div>"
 }

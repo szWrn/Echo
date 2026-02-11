@@ -50,12 +50,12 @@ def get_index():
     
     return jsonify({"data": all_data})
 
-@app.route('/get_report/', methods=['POST'])
+@app.route('/get_report/', methods=['GET'])
 def get_report():
-    # 获取请求体中的id
+    # 获取查询参数中的id
     try:
-        request_data = request.get_json()
-        training_id = request_data.get('id')
+        training_id = request.args.get('id')
+        print(training_id)
         if not training_id:
             return jsonify({"data": []})
         
@@ -104,6 +104,7 @@ def get_report():
                     for item in data['detail']:
                         # 构建报告项
                         report_item = {
+                            "id": item.get('id', 0),  # 修正字段名为id
                             "question": item.get('question', ''),  # 修正字段名为question
                             "user_answer": item.get('user_answer', ''),
                             "correct_answer": item.get('correct_answer', ''),
@@ -129,7 +130,7 @@ def get_report():
     except Exception as e:
         pass
     
-    return jsonify({"data": report_data})
+    return jsonify({"data": report_data,"report": data["report"]})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=443)
